@@ -143,3 +143,14 @@ curl http://localhost:8000/
 - Exceed configured rate limits by repeatedly calling endpoints to trigger rate-limit alerts.
 - Monitor Alertmanager to see incoming alerts and their routing/notifications.
 
+  ## Will show the following output in VS code if working properly 
+C:\Users\HP\VS_projects\Prometheus_Metrics_Alerts> python -m uvicorn main:app --reload      
+
+INFO:     Will watch for changes in these directories: ['C:\\Users\\HP\\VS_projects\\Prometheus_Metrics_Alerts']        
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [18476] using WatchFiles
+INFO:     Started server process [21432]
+INFO:     Waiting for application startup.
+2025-10-28T19:19:22.967692+0500 | INFO | {'event': 'startup', 'msg': 'Redis client initialized'}
+INFO:     Application startup complete.
+
