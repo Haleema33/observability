@@ -1,0 +1,15 @@
+apiVersion: v2
+name: loki
+description: A Helm chart for Loki log aggregation system
+type: application
+version: 0.1.0
+appVersion: "2.9.0"
+keywords:
+  - loki
+  - logging
+  - observability
+home: https://grafana.com/oss/loki/
+sources:
+  - https://github.com/grafana/loki
+maintainers:
+  - name: observability-team

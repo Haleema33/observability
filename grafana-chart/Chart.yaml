@@ -1,0 +1,15 @@
+apiVersion: v2
+name: grafana
+description: A Helm chart for Grafana observability dashboard
+type: application
+version: 0.1.0
+appVersion: "10.2.0"
+keywords:
+  - grafana
+  - monitoring
+  - observability
+home: https://grafana.com/
+sources:
+  - https://github.com/grafana/grafana
+maintainers:
+  - name: observability-team

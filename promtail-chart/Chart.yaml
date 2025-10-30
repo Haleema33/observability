@@ -1,0 +1,16 @@
+apiVersion: v2
+name: promtail
+description: A Helm chart for Promtail log collection agent
+type: application
+version: 0.1.0
+appVersion: "2.9.0"
+keywords:
+  - promtail
+  - logging
+  - observability
+  - log-collection
+home: https://grafana.com/oss/loki/
+sources:
+  - https://github.com/grafana/loki
+maintainers:
+  - name: observability-team
