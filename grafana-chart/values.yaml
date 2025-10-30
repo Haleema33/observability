@@ -1,0 +1,67 @@
+# IMPORTANT CUSTOMIZATION VALUES:
+# - adminUser/adminPassword: Default admin credentials
+# - persistence.enabled/size: Storage for dashboards and data
+# - datasources: Configure Loki and other data sources
+# - service.type: LoadBalancer for external access
+
+replicaCount: 1
+
+image:
+  repository: grafana/grafana
+  tag: "10.2.0"
+  pullPolicy: IfNotPresent
+
+# IMPORTANT: Change default admin credentials
+adminUser: admin
+adminPassword: admin123
+
+service:
+  type: ClusterIP  # Change to LoadBalancer for external access
+  port: 3000
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: grafana.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
+
+# IMPORTANT: Enable persistence for production
+persistence:
+  enabled: true
+  size: 10Gi
+  storageClassName: ""  # Use default storage class
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+# IMPORTANT: Configure data sources (especially Loki)
+datasources:
+  - name: Loki Datasource
+    type: loki
+    url: http://loki.default.svc.cluster.local:3100
+    access: proxy
+    isDefault: true
+
+# Default dashboards configuration
+dashboards:
+  enabled: true
+  
+# Security context
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 472
+  fsGroup: 472
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
