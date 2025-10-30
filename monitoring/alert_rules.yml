@@ -1,0 +1,11 @@
+groups:
+  - name: FastAPI Alerts
+    rules:
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status="500"}[1m]) > 0.5
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          description: "High number of 500 errors"
+          summary: "More than 50% of requests are failing with 500 status code"

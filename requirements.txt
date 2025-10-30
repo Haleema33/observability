@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+loguru
+slowapi
+limits
+pydantic
+pydantic-settings
+redis
+
+prometheus_fastapi_instrumentator
+fastapi-limiter
+python-multipart
+
+prometheus-client
+prometheus-fastapi-instrumentator
