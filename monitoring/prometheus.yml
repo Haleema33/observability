@@ -13,3 +13,4 @@ scrape_configs:
 
 rule_files:
   - "/etc/prometheus/alert_rules.yml"
+  - "prometheus-alerts.yml"

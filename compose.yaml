@@ -34,6 +34,7 @@ services:
     volumes:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
       - ./monitoring/alert_rules.yml:/etc/prometheus/alert_rules.yml
+      - ./prometheus-alerts.yml:/etc/prometheus/prometheus-alerts.yml
   
   alertmanager:
     image: prom/alertmanager
