@@ -24,7 +24,7 @@ config:
   
   # IMPORTANT: Point to your Loki instance
   clients:
-    - url: http://loki.default.svc.cluster.local:3100/loki/api/v1/push
+    - url: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
   
   positions:
     filename: /tmp/positions.yaml
@@ -69,21 +69,21 @@ config:
             - __meta_kubernetes_pod_container_name
           action: replace
           target_label: container
-        - replacement: /var/log/pods/*$1/*.log
+        - replacement: /var/log/pods/*/*/*.log #/var/log/pods/*$1/*.log
           separator: /
           source_labels:
             - __meta_kubernetes_pod_uid
             - __meta_kubernetes_pod_container_name
           target_label: __path__
     
-    # System logs
+      # System logs
     - job_name: system-logs
       static_configs:
         - targets:
             - localhost
           labels:
             job: system-logs
-            __path__: /var/log/*.log
+            __path__: /var/log/host/containers/*.log
 
 # Volume mounts for log collection
 volumes:

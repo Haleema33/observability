@@ -1,0 +1,11 @@
+groups:
+  - name: basic_alerts
+    rules:
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status="500"}[5m]) > 0.05
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High Error Rate Detected"
+          description: "More than 5% of requests failed in the last 5 minutes."
