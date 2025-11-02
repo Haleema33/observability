@@ -1,3 +1,25 @@
+## Ways to login to Grafana through VS Code:
+
+1. Check Secret Name
+Make sure your Grafana secret is really called grafana.
+Some Helm charts name it differently, e.g.:
+kubectl get secrets -n monitoring | findstr grafana
+You might see something like:
+loki-stack-grafana
+prometheus-grafana
+Then use the correct one:
+kubectl get secret loki-stack-grafana -n monitoring -o jsonpath="{.data.admin-password}" | ForEach-Object { [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($_)) }
+________________________________________
+2. Port Forward Correctly
+kubectl port-forward svc/loki-stack-grafana -n monitoring 3000:80
+Then open:
+🔗 http://localhost:3000
+Login:
+username: admin
+password: <the decoded password>
+
+
+
 <<<<<<< HEAD
 # Observability Helm Charts
 
@@ -296,3 +318,7 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 
 >>>>>>> alerts_metrics
+
+
+
+
